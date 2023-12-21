@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialBook</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .nav {
+            background-color: #0077B5;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            position: fixed;
+            top: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        h2 {
+            color: white;
+        }
+        .wrapper {
+            display: flex;
+        }
+        .left {
+            padding: 20px;
+            width: 50%;
+            position: fixed;
+            top: 0;
+            margin-top: 100px;
+        }
+        h3 {
+            font-size: 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-style: italic;
+            display: flex;
+            justify-content: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        label {
+            font-size: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        input {
+            width: 300px;
+            height: 30px;
+            font-size: 18px;
+        }
+        textarea {
+            font-size: 18px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 30px 10px 30px;
+            border-radius: 8px;
+            color: white;
+            background-color: #0077B5;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+            width: 50%;
+            margin-left: 50%;
+            margin-top: 100px;
+        }
+        .post {
+            padding: 20px;
+            border: 2px solid #0077B5;
+            border-radius: 8px;
+            margin: 20px;
+        }
+        .heading {
+            font-size: 25px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+        }
+        .stamp {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 18px;
+        }
+        .content {
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/"><h2>SocialBook</h2></a>
+    </div>
+    <div class="wrapper">
+        <div class="left">
+            <h3>Hello <%= user %>!</h3>
+            <form action="/addPost">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title">
+                <label for="content">Write Here</label>
+                <textarea name="content" id="content" cols="50" rows="10"></textarea>
+                <input type="text" name="user" id="user" value=<%= user %> hidden>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+        <div class="right">
+            <% for(var i = A.length-1; i >= 0; i--){ %>
+                <div class="post">
+                <p class="heading"> <%= A[i].title %> ( <span style="color:#0077B5;"><%= A[i].username %></span> )</p>
+                <p class="stamp"> <%= A[i].stamp %> </p>
+                <p class="content"> <%= A[i].content %> </p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
